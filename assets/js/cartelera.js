@@ -63,7 +63,7 @@ $(document).ready(function () {
         new PeliculaCartel("1", "assets/image/Cartelera1.png"),
         new PeliculaCartel("2", "assets/image/Cartelera2.png"),
         new PeliculaCartel("3", "assets/image/Cartelera3.png"),
-        new PeliculaCartel("4", "assets/image/Cartelera4.png")
+        new PeliculaCartel("4", "http://www.cinepolis.com.mx/Imagenes/Peliculas/chicas-armadas-y-peligrosas-cartel.jpg")
     ]);
 
     }
