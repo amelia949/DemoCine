@@ -20,7 +20,7 @@ function onDeviceReady() {
 $(document).ready(function () {
     $("#listaPelicula").height($(window).height() * .72);
     $(".menu").height($(window).height() * .65);
-
+    $(".menu").hide();
     // Class to represent a row in the seat reservations grid
     function PeliculaCartel(idPelicula, imagePath) {
         var self = this;
