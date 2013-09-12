@@ -28,7 +28,7 @@ $(document).ready(function () {
         self.imagePath = imagePath;
     }
 
-    
+    /*
     var surl = "http://172.16.0.76:8081/cineco/rest/allPeliculas/1?callback?";
     $.ajax({
     type: 'GET',
@@ -53,8 +53,8 @@ $(document).ready(function () {
     }
 
 
-    }
-  /*
+    }*/
+  
     function CarteleraViewModel() {
         var self = this;
         self.detallePelicula = function (seat) { alert("Mostrar Detalle de " + seat.idPelicula); }
@@ -69,7 +69,7 @@ $(document).ready(function () {
     }
 
     ko.applyBindings(new CarteleraViewModel());
-*/
+
     new DragDivScroll('listaPelicula', "NOHORIZONTAL NOMOUSEWHEEL");
 
     $("#footer").click(
