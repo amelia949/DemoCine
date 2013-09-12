@@ -1,0 +1,95 @@
+/*document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+            var surl = "http://172.16.0.76:8081/cineco/rest/pelicula/2?callback?";
+             $.ajax({
+                type: 'GET',
+                url: surl,
+                dataType: "json",
+            contentType: "text/plain;charset=UTF-8",
+                success: function (val) {
+                    alert("Valor " + val.data.sinopsis);
+                    
+                },
+                error: function (xhr, status, error) { alert('Error text !!' + error+"- " + status); }
+            });
+  }
+
+  */
+
+$(document).ready(function () {
+    $("#listaPelicula").height($(window).height() * .72);
+    $(".menu").height($(window).height() * .65);
+
+    // Class to represent a row in the seat reservations grid
+    function PeliculaCartel(idPelicula, imagePath) {
+        var self = this;
+        self.idPelicula = idPelicula;
+        self.imagePath = imagePath;
+    }
+
+    
+    var surl = "http://172.16.0.76:8081/cineco/rest/allPeliculas/1?callback?";
+    $.ajax({
+    type: 'GET',
+    url: surl,
+    dataType: "json",
+    contentType: "text/plain;charset=UTF-8",
+    success: function (val) {
+    ko.applyBindings(new CarteleraViewModel(val));
+    },
+    error: function (xhr, status, error) { alert('Error text !!' + error+"- " + status); }
+    });
+
+    // Overall viewmodel for this screen, along with initial state
+    function CarteleraViewModel(valJson) {
+        alert()
+    var self = this;
+    self.detallePelicula = function (seat) { alert("Mostrar Detalle de " + seat.idPelicula); }
+    var data= valJson.data;
+    self.listPeliculas = ko.observableArray([]);
+    for( x=0 ; x<data.length;x++){
+        alert(valJson.data[x].idPelicula +"-"+valJson.data[x].imgCartelera )
+        self.seats.push(new PeliculaCartel(valJson.data[x].idPelicula, valJson.data[x].imgCartelera));
+    }
+
+
+    }
+  /*
+    function CarteleraViewModel() {
+        var self = this;
+        self.detallePelicula = function (seat) { alert("Mostrar Detalle de " + seat.idPelicula); }
+        // Editable data
+        self.listPeliculas = ko.observableArray([
+        new PeliculaCartel("1", "assets/image/Cartelera1.png"),
+        new PeliculaCartel("2", "assets/image/Cartelera2.png"),
+        new PeliculaCartel("3", "assets/image/Cartelera3.png"),
+        new PeliculaCartel("4", "assets/image/Cartelera4.png")
+    ]);
+
+    }
+
+    ko.applyBindings(new CarteleraViewModel());
+*/
+    new DragDivScroll('listaPelicula', "NOHORIZONTAL NOMOUSEWHEEL");
+
+    $("#footer").click(
+          function () {
+              $(".menu").show();
+          }
+        );
+    $("#listaPelicula").hover(function () {
+
+        $(".menu").hide();
+    });
+
+    $("#ocultaMenu").click(function (){$(".menu").hide();});
+
+
+});
+
+$(window).resize(function () {
+       
+    $("#listaPelicula").height($(window).height() *.72);
+    $(".menu").height($(window).height() *.65);
+});
