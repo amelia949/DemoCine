@@ -43,14 +43,13 @@ $(document).ready(function () {
 
     // Overall viewmodel for this screen, along with initial state
     function CarteleraViewModel(valJson) {
-        alert()
     var self = this;
     self.detallePelicula = function (seat) { alert("Mostrar Detalle de " + seat.idPelicula); }
     var data= valJson.data;
     self.listPeliculas = ko.observableArray([]);
     for( x=0 ; x<data.length;x++){
         alert(valJson.data[x].idPelicula +"-"+valJson.data[x].imgCartelera )
-        self.seats.push(new PeliculaCartel(valJson.data[x].idPelicula, valJson.data[x].imgCartelera));
+        self.listPeliculas.push(new PeliculaCartel(valJson.data[x].idPelicula, valJson.data[x].imgCartelera));
     }
 
 
